@@ -10,6 +10,13 @@ class FirstPage extends StatefulWidget {
 
 class _FirstPageState extends State<FirstPage> {
   int selectedindex = 0;
+  static List<Widget> screens = [
+    LoginScreen(),
+    Container(
+      color: Colors.black,
+    )
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,14 +30,7 @@ class _FirstPageState extends State<FirstPage> {
             ),
             child: Stack(
               children: [
-                Container(
-                  height: 150,
-                  width: 420,
-                  child: Image.network(
-                    "https://marketplace.canva.com/EAE-M0LQ64o/2/0/1131w/canva-brown-aesthetic-coffee-shop-%28flyer%29-MlRwfKVkRt4.jpg",
-                    fit: BoxFit.fill,
-                  ),
-                ),
+                LoginScreen(),
                 Column(
                   children: [
                     SizedBox(
@@ -63,8 +63,11 @@ class _FirstPageState extends State<FirstPage> {
                             labels: ['Sign In', 'Register'],
                             fontSize: 20,
                             radiusStyle: true,
+                            selectedIndex: selectedIndex,
                             onToggle: (index) {
-                              print('switched to: $index');
+                              setState(() {
+                                selectedIndex = index;
+                              });
                             },
                           ),
                         ),
@@ -74,126 +77,6 @@ class _FirstPageState extends State<FirstPage> {
                 )
               ],
             ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(25.0),
-            child: TextFormField(
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
-                      borderSide: BorderSide.none),
-                  hintText: "Email",
-                  filled: true,
-                  fillColor: Color(0xFFEBEFF2)),
-            ),
-          ),
-          Container(
-            height: 60,
-            width: 360,
-            child: TextFormField(
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
-                      borderSide: BorderSide.none),
-                  hintText: "Password",
-                  filled: true,
-                  fillColor: Color(0xFFEBEFF2),
-                  suffixIcon: Icon(Icons.remove_red_eye_outlined)),
-            ),
-          ),
-          Row(
-            children: [
-              Spacer(
-                flex: 2,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      "Forgot Password?",
-                      style: TextStyle(color: Color(0xFFE65738)),
-                    )),
-              )
-            ],
-          ),
-          GestureDetector(
-            onTap: () {},
-            child: Container(
-              height: 50,
-              width: 350,
-              decoration: BoxDecoration(
-                  color: Color(0xFF293441),
-                  borderRadius: BorderRadius.circular(20)),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    "Login",
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  )
-                ],
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 30,
-          ),
-          Row(
-            children: [
-              Expanded(
-                child: Divider(
-                  thickness: 1,
-                  color: Color(0xFFE65738),
-                  indent: 20,
-                  endIndent: 20,
-                ),
-              ),
-              Text(
-                "or login with",
-                style: TextStyle(
-                    color: Color(0xFF657886),
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15),
-              ),
-              Expanded(
-                child: Divider(
-                  thickness: 1,
-                  color: Color(0xFFE65738),
-                  indent: 20,
-                  endIndent: 20,
-                ),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 30,
-          ),
-          Row(
-            children: [
-              SizedBox(
-                width: 20,
-              ),
-              LogoBox(
-                image: "assets/facebook.png",
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              LogoBox(
-                image: "assets/google.png",
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              LogoBox(
-                image: "assets/apple.png",
-              )
-            ],
           ),
           Spacer(),
         ],
@@ -223,6 +106,148 @@ class _FirstPageState extends State<FirstPage> {
           ],
         ),
       ),
+    );
+  }
+}
+
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          height: 150,
+          width: 420,
+          child: Image.network(
+            "https://marketplace.canva.com/EAE-M0LQ64o/2/0/1131w/canva-brown-aesthetic-coffee-shop-%28flyer%29-MlRwfKVkRt4.jpg",
+            fit: BoxFit.fill,
+          ),
+        ),
+        SizedBox(
+          height: 20,
+        ),
+        Padding(
+          padding: const EdgeInsets.all(25.0),
+          child: TextFormField(
+            decoration: InputDecoration(
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: BorderSide.none),
+                hintText: "Email",
+                filled: true,
+                fillColor: Color(0xFFEBEFF2)),
+          ),
+        ),
+        Container(
+          height: 60,
+          width: 360,
+          child: TextFormField(
+            decoration: InputDecoration(
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: BorderSide.none),
+                hintText: "Password",
+                filled: true,
+                fillColor: Color(0xFFEBEFF2),
+                suffixIcon: Icon(Icons.remove_red_eye_outlined)),
+          ),
+        ),
+        Row(
+          children: [
+            Spacer(
+              flex: 2,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    "Forgot Password?",
+                    style: TextStyle(color: Color(0xFFE65738)),
+                  )),
+            )
+          ],
+        ),
+        GestureDetector(
+          onTap: () {},
+          child: Container(
+            height: 50,
+            width: 350,
+            decoration: BoxDecoration(
+                color: Color(0xFF293441),
+                borderRadius: BorderRadius.circular(20)),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  "Login",
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                )
+              ],
+            ),
+          ),
+        ),
+        SizedBox(
+          height: 30,
+        ),
+        Row(
+          children: [
+            Expanded(
+              child: Divider(
+                thickness: 1,
+                color: Color(0xFFE65738),
+                indent: 20,
+                endIndent: 20,
+              ),
+            ),
+            Text(
+              "or login with",
+              style: TextStyle(
+                  color: Color(0xFF657886),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15),
+            ),
+            Expanded(
+              child: Divider(
+                thickness: 1,
+                color: Color(0xFFE65738),
+                indent: 20,
+                endIndent: 20,
+              ),
+            ),
+          ],
+        ),
+        SizedBox(
+          height: 30,
+        ),
+        Row(
+          children: [
+            SizedBox(
+              width: 20,
+            ),
+            LogoBox(
+              image: "assets/facebook.png",
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            LogoBox(
+              image: "assets/google.png",
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            LogoBox(
+              image: "assets/apple.png",
+            )
+          ],
+        ),
+      ],
     );
   }
 }
