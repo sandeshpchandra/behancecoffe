@@ -10,7 +10,12 @@ class FirstPage extends StatefulWidget {
 
 class _FirstPageState extends State<FirstPage> {
   int selectedIndex = 0;
-  static List<Widget> screens = [];
+  static List<Widget> screens = [
+    LoginScreen(),
+    Container(
+      color: Colors.black,
+    )
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,6 +44,7 @@ class _FirstPageState extends State<FirstPage> {
                     ),
                     Row(
                       children: [
+                        screens[selectedIndex],
                         SizedBox(
                           width: 45,
                         ),
