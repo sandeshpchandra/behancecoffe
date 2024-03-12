@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 
 import 'firstpage.dart';
 
-class RegisterScreen extends StatelessWidget {
+class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
+
+  @override
+  State<RegisterScreen> createState() => _RegisterScreenState();
+}
+
+class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
-    var _isObscure;
-
-    void initState() {
-      _isObscure = true;
-    }
+    bool _isObscure = true;
 
     return Column(
       children: [
