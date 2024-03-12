@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
+import 'homescreen.dart';
 import 'registerscreen.dart';
 
 class FirstPage extends StatefulWidget {
@@ -175,7 +176,12 @@ class LoginScreen extends StatelessWidget {
           ],
         ),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (context) => const HomeScrren()),
+                (route) => false);
+          },
           child: Container(
             height: 50,
             width: 350,

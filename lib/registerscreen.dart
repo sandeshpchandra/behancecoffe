@@ -11,9 +11,9 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   @override
-  Widget build(BuildContext context) {
-    bool _isObscure = true;
+  bool _isObscure = true;
 
+  Widget build(BuildContext context) {
     return Column(
       children: [
         Container(
@@ -96,6 +96,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           height: 60,
           width: 360,
           child: TextFormField(
+            obscureText: _isObscure,
             decoration: InputDecoration(
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(20),
@@ -104,7 +105,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
               hintText: "Confirm Password",
               filled: true,
               fillColor: Color(0xFFEBEFF2),
-              suffixIcon: Icon(Icons.remove_red_eye_outlined),
+              suffixIcon: IconButton(
+                icon: Icon(
+                  _isObscure ? Icons.visibility : Icons.visibility_off,
+                ),
+                onPressed: () {
+                  setState(() {
+                    _isObscure = !_isObscure;
+                  });
+                },
+              ),
             ),
           ),
         ),
