@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
+import 'registerscreen.dart';
+
 class FirstPage extends StatefulWidget {
-  const FirstPage({super.key});
+  const FirstPage({Key? key}) : super(key: key);
 
   @override
   State<FirstPage> createState() => _FirstPageState();
 }
 
 class _FirstPageState extends State<FirstPage> {
-  int selectedindex = 0;
-  static List<Widget> screens = [
-    LoginScreen(),
-    Container(
-      color: Colors.black,
-    )
-  ];
+  int selectedIndex = 0;
+  static List<Widget> screens = [LoginScreen(), RegisterScreen()];
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +27,7 @@ class _FirstPageState extends State<FirstPage> {
             ),
             child: Stack(
               children: [
-                LoginScreen(),
+                screens[selectedIndex],
                 Column(
                   children: [
                     SizedBox(
@@ -45,28 +42,27 @@ class _FirstPageState extends State<FirstPage> {
                           height: 50,
                           width: 340,
                           decoration: BoxDecoration(
-                              color: Color(0xFFD7E7F3),
-                              borderRadius: BorderRadius.circular(30)),
-                          child: // Here, default theme colors are used for activeBgColor, activeFgColor, inactiveBgColor and inactiveFgColor
-                              ToggleSwitch(
+                            color: Color(0xFFD7E7F3),
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          child: ToggleSwitch(
                             minWidth: 169.0,
                             cornerRadius: 30.0,
                             activeBgColors: [
-                              [Color(0xFFE65738)!],
-                              [Color(0xFFE65738)!]
+                              [Color(0xFFE65738)],
+                              [Color(0xFFE65738)],
                             ],
                             activeFgColor: Colors.white,
                             inactiveBgColor: Colors.grey,
                             inactiveFgColor: Colors.white,
-                            initialLabelIndex: 1,
+                            initialLabelIndex: selectedIndex,
                             totalSwitches: 2,
                             labels: ['Sign In', 'Register'],
                             fontSize: 20,
                             radiusStyle: true,
-                            selectedIndex: selectedIndex,
                             onToggle: (index) {
                               setState(() {
-                                selectedIndex = index;
+                                selectedIndex = index!;
                               });
                             },
                           ),
@@ -74,7 +70,7 @@ class _FirstPageState extends State<FirstPage> {
                       ],
                     ),
                   ],
-                )
+                ),
               ],
             ),
           ),
@@ -90,19 +86,22 @@ class _FirstPageState extends State<FirstPage> {
             Text(
               "Already have an account?",
               style: TextStyle(
-                  color: Color(0xFF657886),
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold),
+                color: Color(0xFF657886),
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             TextButton(
-                onPressed: () {},
-                child: Text(
-                  "Register Now",
-                  style: TextStyle(
-                      color: Color(0xFFE65738),
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold),
-                ))
+              onPressed: () {},
+              child: Text(
+                "Register Now",
+                style: TextStyle(
+                  color: Color(0xFFE65738),
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
           ],
         ),
       ),
@@ -111,9 +110,7 @@ class _FirstPageState extends State<FirstPage> {
 }
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({
-    super.key,
-  });
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -134,12 +131,14 @@ class LoginScreen extends StatelessWidget {
           padding: const EdgeInsets.all(25.0),
           child: TextFormField(
             decoration: InputDecoration(
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide.none),
-                hintText: "Email",
-                filled: true,
-                fillColor: Color(0xFFEBEFF2)),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20),
+                borderSide: BorderSide.none,
+              ),
+              hintText: "Email",
+              filled: true,
+              fillColor: Color(0xFFEBEFF2),
+            ),
           ),
         ),
         Container(
@@ -147,13 +146,15 @@ class LoginScreen extends StatelessWidget {
           width: 360,
           child: TextFormField(
             decoration: InputDecoration(
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide.none),
-                hintText: "Password",
-                filled: true,
-                fillColor: Color(0xFFEBEFF2),
-                suffixIcon: Icon(Icons.remove_red_eye_outlined)),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20),
+                borderSide: BorderSide.none,
+              ),
+              hintText: "Password",
+              filled: true,
+              fillColor: Color(0xFFEBEFF2),
+              suffixIcon: Icon(Icons.remove_red_eye_outlined),
+            ),
           ),
         ),
         Row(
@@ -164,12 +165,13 @@ class LoginScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    "Forgot Password?",
-                    style: TextStyle(color: Color(0xFFE65738)),
-                  )),
-            )
+                onPressed: () {},
+                child: Text(
+                  "Forgot Password?",
+                  style: TextStyle(color: Color(0xFFE65738)),
+                ),
+              ),
+            ),
           ],
         ),
         GestureDetector(
@@ -178,8 +180,9 @@ class LoginScreen extends StatelessWidget {
             height: 50,
             width: 350,
             decoration: BoxDecoration(
-                color: Color(0xFF293441),
-                borderRadius: BorderRadius.circular(20)),
+              color: Color(0xFF293441),
+              borderRadius: BorderRadius.circular(20),
+            ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -187,7 +190,7 @@ class LoginScreen extends StatelessWidget {
                 Text(
                   "Login",
                   style: TextStyle(color: Colors.white, fontSize: 20),
-                )
+                ),
               ],
             ),
           ),
@@ -208,9 +211,10 @@ class LoginScreen extends StatelessWidget {
             Text(
               "or login with",
               style: TextStyle(
-                  color: Color(0xFF657886),
-                  fontWeight: FontWeight.bold,
-                  fontSize: 15),
+                color: Color(0xFF657886),
+                fontWeight: FontWeight.bold,
+                fontSize: 15,
+              ),
             ),
             Expanded(
               child: Divider(
@@ -244,7 +248,7 @@ class LoginScreen extends StatelessWidget {
             ),
             LogoBox(
               image: "assets/apple.png",
-            )
+            ),
           ],
         ),
       ],
@@ -255,9 +259,9 @@ class LoginScreen extends StatelessWidget {
 class LogoBox extends StatelessWidget {
   final String image;
   const LogoBox({
-    super.key,
+    Key? key,
     required this.image,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -265,7 +269,9 @@ class LogoBox extends StatelessWidget {
       height: 100,
       width: 115,
       decoration: BoxDecoration(
-          color: Color(0xFFFDF0E8), borderRadius: BorderRadius.circular(20)),
+        color: Color(0xFFFDF0E8),
+        borderRadius: BorderRadius.circular(20),
+      ),
       child: Image.asset(
         image,
         fit: BoxFit.fill,
