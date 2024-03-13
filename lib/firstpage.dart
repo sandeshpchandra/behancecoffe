@@ -179,7 +179,7 @@ class LoginScreen extends StatelessWidget {
           onTap: () {
             Navigator.pushAndRemoveUntil(
                 context,
-                MaterialPageRoute(builder: (context) => const HomeScrren()),
+                MaterialPageRoute(builder: (context) => const HomeScreen()),
                 (route) => false);
           },
           child: Container(
