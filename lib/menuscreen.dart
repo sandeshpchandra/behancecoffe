@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'homescreen.dart';
+import 'singlecoffe.dart';
 
 class MenuScreen extends StatefulWidget {
   const MenuScreen({super.key});
@@ -183,32 +184,110 @@ class HomePage extends StatelessWidget {
         SizedBox(
           height: 20,
         ),
-        GridView.count(
-            crossAxisCount: 2,
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
-            padding: EdgeInsets.all(20),
-            children: List.generate(
-                discovery.length,
-                (index) => Material(
-                      elevation: 2,
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.white,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            discovery[index]["image"],
-                            fit: BoxFit.cover,
-                            height: 100,
-                            width: 100,
-                          ),
-                          Text(discovery[index]["title"]),
-                          Text(discovery[index]["subtitle"]),
-                        ],
-                      ),
-                    )))
+        Expanded(
+          child: GridView.count(
+              crossAxisCount: 2,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
+              padding: EdgeInsets.all(20),
+              children: List.generate(
+                  discovery.length,
+                  (index) => Material(
+                        elevation: 2,
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.white,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              discovery[index]["image"],
+                              fit: BoxFit.cover,
+                              height: 100,
+                              width: 100,
+                            ),
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: 20,
+                                ),
+                                Text(
+                                  discovery[index]["title"],
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: 20,
+                                ),
+                                Text(
+                                  discovery[index]["subtitle"],
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15),
+                                ),
+                              ],
+                            ),
+                            Spacer(),
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: 20,
+                                ),
+                                Icon(
+                                  Icons.currency_rupee,
+                                  color: Color(0xFFE65738),
+                                  size: 20,
+                                ),
+                                Text(
+                                  discovery[index]["price"],
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15),
+                                ),
+                                Spacer(),
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const SingleCoffe()),
+                                    );
+                                  },
+                                  child: Container(
+                                    height: 40,
+                                    width: 50,
+                                    decoration: BoxDecoration(
+                                        color: Color(0xFFE65738),
+                                        borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(20),
+                                            bottomRight: Radius.circular(20))),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Icon(
+                                          Icons.add,
+                                          color: Colors.white,
+                                          size: 30,
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                )
+                              ],
+                            )
+                          ],
+                        ),
+                      ))),
+        )
       ],
     );
   }
@@ -256,21 +335,51 @@ class CategoriesCard extends StatelessWidget {
 
 List<Map<String, dynamic>> discovery = [
   {
-    "title": "Bars & Hotels",
-    "subtitle": "42 Place",
-    "image": "assets/coffee.jpg"
+    "title": "Caramel",
+    "subtitle": "Macchiato",
+    "image": "assets/coffee.jpg",
+    "price": "4.0",
   },
   {
-    "title": "Fine Dining",
-    "subtitle": "15 Place",
-    "image": "assets/coffee.jpg"
+    "title": " Vanilla",
+    "subtitle": "Latte",
+    "image": "assets/coffee.jpg",
+    "price": "3.0",
   },
-  {"title": "Cafes", "subtitle": "28 Place", "image": "assets/coffee.jpg"},
-  {"title": "Nearby", "subtitle": "34 Place", "image": "assets/coffee.jpg"},
-  {"title": "Fast Foods", "subtitle": "29 Place", "image": "assets/coffee.jpg"},
   {
-    "title": "Featured Foods",
-    "subtitle": "21 Place",
-    "image": "assets/coffee.jpg"
-  }
+    "title": "White Caramel",
+    "subtitle": "Mocha",
+    "image": "assets/coffee.jpg",
+    "price": "4.0",
+  },
+  {
+    "title": "Traditional",
+    "subtitle": "Cappuccino",
+    "image": "assets/coffee.jpg",
+    "price": "4.0",
+  },
+  {
+    "title": " White Chocolate",
+    "subtitle": "Mocha",
+    "image": "assets/coffee.jpg",
+    "price": "4.0"
+  },
+  {
+    "title": "Traditional ",
+    "subtitle": "Chai",
+    "image": "assets/coffee.jpg",
+    "price": "4.0"
+  },
+  {
+    "title": "Caramel",
+    "subtitle": "Macchiato",
+    "image": "assets/coffee.jpg",
+    "price": "4.0",
+  },
+  {
+    "title": "Caramel",
+    "subtitle": "Macchiato",
+    "image": "assets/coffee.jpg",
+    "price": "4.0",
+  },
 ];
