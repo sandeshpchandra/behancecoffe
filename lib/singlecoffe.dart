@@ -339,68 +339,7 @@ class _HomePageState extends State<HomePage> {
                   showModalBottomSheet(
                       context: context,
                       builder: (BuildContext) {
-                        return SizedBox(
-                          height: 200,
-                          child: Column(
-                            children: [
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    width: 20,
-                                  ),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Milk",
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 17,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        "PIck 1",
-                                        style: TextStyle(
-                                            color: Colors.grey,
-                                            fontWeight: FontWeight.bold),
-                                      )
-                                    ],
-                                  ),
-                                  Spacer(),
-                                  IconButton(
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                    },
-                                    icon: Icon(Icons.close_outlined),
-                                    color: Colors.black,
-                                  )
-                                ],
-                              ),
-                              Radio(
-                                value: 0,
-                                groupValue: selectedIndex,
-                                onChanged: (value) {
-                                  setState(() {
-                                    selectedIndex = value!;
-                                  });
-                                },
-                              ),
-                              Radio(
-                                value: 1,
-                                groupValue: selectedIndex,
-                                onChanged: (value) {
-                                  setState(() {
-                                    selectedIndex = value!;
-                                  });
-                                },
-                              ),
-                            ],
-                          ),
-                        );
+                        return PopUpBox();
                       });
                 },
                 height: 60,
@@ -420,6 +359,133 @@ class _HomePageState extends State<HomePage> {
           ),
         )
       ],
+    );
+  }
+}
+
+class PopUpBox extends StatefulWidget {
+  const PopUpBox({
+    super.key,
+  });
+
+  @override
+  State<PopUpBox> createState() => _PopUpBoxState();
+}
+
+class _PopUpBoxState extends State<PopUpBox> {
+  int selectedIndex = 0;
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 600,
+      child: Column(
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(
+                width: 20,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(
+                    "Milk",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    "PIck 1",
+                    style: TextStyle(
+                        color: Colors.grey, fontWeight: FontWeight.bold),
+                  )
+                ],
+              ),
+              Spacer(),
+              IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: Icon(Icons.close_outlined),
+                color: Colors.black,
+              )
+            ],
+          ),
+          Row(
+            children: [
+              SizedBox(
+                width: 10,
+              ),
+              Radio(
+                value: 0,
+                groupValue: selectedIndex,
+                onChanged: (value) {
+                  setState(() {
+                    selectedIndex = value!;
+                  });
+                },
+              ),
+              Text(
+                "Full-fat milk",
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold),
+              )
+            ],
+          ),
+          Row(
+            children: [
+              SizedBox(
+                width: 10,
+              ),
+              Radio(
+                value: 1,
+                groupValue: selectedIndex,
+                onChanged: (value) {
+                  setState(() {
+                    selectedIndex = value!;
+                  });
+                },
+              ),
+              Text(
+                "Lactose free milk",
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold),
+              )
+            ],
+          ),
+          Row(
+            children: [
+              SizedBox(
+                width: 10,
+              ),
+              Radio(
+                value: 2,
+                groupValue: selectedIndex,
+                onChanged: (value) {
+                  setState(() {
+                    selectedIndex = value!;
+                  });
+                },
+              ),
+              Text(
+                "Soy milk",
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold),
+              )
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
