@@ -374,118 +374,333 @@ class PopUpBox extends StatefulWidget {
 
 class _PopUpBoxState extends State<PopUpBox> {
   int selectedIndex = 0;
+  int selectedIndex1 = 0;
+  bool isChecked = false;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 600,
-      child: Column(
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              SizedBox(
-                width: 20,
-              ),
-              Column(
+      child: ListView(scrollDirection: Axis.vertical, children: [
+        Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text(
-                    "Milk",
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 17,
-                        fontWeight: FontWeight.bold),
+                  SizedBox(
+                    width: 20,
                   ),
-                  Text(
-                    "PIck 1",
-                    style: TextStyle(
-                        color: Colors.grey, fontWeight: FontWeight.bold),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Milk",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 17,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        "PIck 1",
+                        style: TextStyle(
+                            color: Colors.grey, fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  ),
+                  Spacer(),
+                  IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: Icon(Icons.close_outlined),
+                    color: Colors.black,
                   )
                 ],
               ),
-              Spacer(),
-              IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon: Icon(Icons.close_outlined),
-                color: Colors.black,
-              )
-            ],
-          ),
-          Row(
-            children: [
-              SizedBox(
-                width: 10,
+            ),
+            Row(
+              children: [
+                SizedBox(
+                  width: 10,
+                ),
+                Radio(
+                  value: 0,
+                  groupValue: selectedIndex,
+                  onChanged: (value) {
+                    setState(() {
+                      selectedIndex = value!;
+                    });
+                  },
+                ),
+                Text(
+                  "Full-fat milk",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold),
+                )
+              ],
+            ),
+            Row(
+              children: [
+                SizedBox(
+                  width: 10,
+                ),
+                Radio(
+                  value: 1,
+                  groupValue: selectedIndex,
+                  onChanged: (value) {
+                    setState(() {
+                      selectedIndex = value!;
+                    });
+                  },
+                ),
+                Text(
+                  "Lactose free milk",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold),
+                )
+              ],
+            ),
+            Row(
+              children: [
+                SizedBox(
+                  width: 10,
+                ),
+                Radio(
+                  value: 2,
+                  groupValue: selectedIndex,
+                  onChanged: (value) {
+                    setState(() {
+                      selectedIndex = value!;
+                    });
+                  },
+                ),
+                Text(
+                  "Soy milk",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold),
+                )
+              ],
+            ),
+            Row(
+              children: [
+                SizedBox(
+                  width: 10,
+                ),
+                Radio(
+                  value: 3,
+                  groupValue: selectedIndex,
+                  onChanged: (value) {
+                    setState(() {
+                      selectedIndex = value!;
+                    });
+                  },
+                ),
+                Text(
+                  "Skim milk",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold),
+                )
+              ],
+            ),
+            Row(
+              children: [
+                SizedBox(
+                  width: 10,
+                ),
+                Radio(
+                  value: 4,
+                  groupValue: selectedIndex,
+                  onChanged: (value) {
+                    setState(() {
+                      selectedIndex = value!;
+                    });
+                  },
+                ),
+                Text(
+                  "Almon milk(+0.7)",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold),
+                )
+              ],
+            ),
+            Row(
+              children: [
+                SizedBox(
+                  width: 10,
+                ),
+                Radio(
+                  value: 5,
+                  groupValue: selectedIndex,
+                  onChanged: (value) {
+                    setState(() {
+                      selectedIndex = value!;
+                    });
+                  },
+                ),
+                Text(
+                  "Oat milk(+0.7)",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold),
+                )
+              ],
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: 30,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Whipped Cream",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      "PIck 1",
+                      style: TextStyle(
+                          color: Colors.grey, fontWeight: FontWeight.bold),
+                    )
+                  ],
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                SizedBox(
+                  width: 10,
+                ),
+                Radio(
+                  value: 0,
+                  groupValue: selectedIndex1,
+                  onChanged: (value) {
+                    setState(() {
+                      selectedIndex1 = value!;
+                    });
+                  },
+                ),
+                Text(
+                  "Without whipped cream",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold),
+                )
+              ],
+            ),
+            Row(
+              children: [
+                SizedBox(
+                  width: 10,
+                ),
+                Radio(
+                  value: 1,
+                  groupValue: selectedIndex1,
+                  onChanged: (value) {
+                    setState(() {
+                      selectedIndex1 = value!;
+                    });
+                  },
+                ),
+                Text(
+                  "With whipped cream (+0.7)",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold),
+                )
+              ],
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: 30,
+                ),
+                Text(
+                  "Caffeine",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                SizedBox(
+                  width: 13,
+                ),
+                Checkbox(
+                    value: isChecked,
+                    onChanged: (bool? value) {
+                      setState(() {
+                        isChecked = value!;
+                      });
+                    }),
+                Text(
+                  "Without caffeine?",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold),
+                )
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: SizedBox(
+                width: 180,
+                child: MaterialButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  height: 60,
+                  minWidth: 10,
+                  color: Color(0xFF29333F),
+                  elevation: 20,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30)),
+                  child: Center(
+                    child: Text(
+                      "Save",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
               ),
-              Radio(
-                value: 0,
-                groupValue: selectedIndex,
-                onChanged: (value) {
-                  setState(() {
-                    selectedIndex = value!;
-                  });
-                },
-              ),
-              Text(
-                "Full-fat milk",
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold),
-              )
-            ],
-          ),
-          Row(
-            children: [
-              SizedBox(
-                width: 10,
-              ),
-              Radio(
-                value: 1,
-                groupValue: selectedIndex,
-                onChanged: (value) {
-                  setState(() {
-                    selectedIndex = value!;
-                  });
-                },
-              ),
-              Text(
-                "Lactose free milk",
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold),
-              )
-            ],
-          ),
-          Row(
-            children: [
-              SizedBox(
-                width: 10,
-              ),
-              Radio(
-                value: 2,
-                groupValue: selectedIndex,
-                onChanged: (value) {
-                  setState(() {
-                    selectedIndex = value!;
-                  });
-                },
-              ),
-              Text(
-                "Soy milk",
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold),
-              )
-            ],
-          ),
-        ],
-      ),
+            )
+          ],
+        ),
+      ]),
     );
   }
 }

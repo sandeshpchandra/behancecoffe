@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
+import 'cartpage.dart';
+import 'favoritespage.dart';
 import 'menuscreen.dart';
+import 'profilepage.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -15,21 +18,9 @@ class _HomeScreenState extends State<HomeScreen> {
   static List<Widget> screens = [
     HomeCoffe(),
     MenuScreen(),
-    Container(
-      height: 100,
-      width: 100,
-      color: Colors.red,
-    ),
-    Container(
-      height: 100,
-      width: 100,
-      color: Colors.green,
-    ),
-    Container(
-      height: 100,
-      width: 100,
-      color: Colors.blue,
-    ),
+    FavoritesPage(),
+    ProfilePage(),
+    CartPage()
   ];
 
   @override
